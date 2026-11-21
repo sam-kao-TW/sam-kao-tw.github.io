@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="light dark">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>高綋恩 Hung-En Kao</title>
+<meta name="description" content="高綋恩（Hung-En Kao）個人學術網站：研究、著作與教學。Personal academic website of Hung-En Kao.">
+<style>
+  :root{
+    --ink:#2b2f33; --muted:#59606a; --line:#d6d1c7; --bg:#f3f1ec; --card:#fbfaf7;
+    --accent:#1f5b80; --accent-soft:#e2eaf0; --todo-bg:#fbeeb8; --todo-ink:#6e5300;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Microsoft JhengHei","Noto Sans TC",sans-serif;
+    --serif:Georgia,"Times New Roman","Noto Serif TC","PMingLiU",serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --ink:#e1e4e8; --muted:#aab2bb; --line:#4a515c; --bg:#262a30; --card:#30353d;
+      --accent:#8ec3e6; --accent-soft:#36434f; --todo-bg:#5a4a17; --todo-ink:#ffe7a3; }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;font-size:16px}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
+  a:hover{border-bottom-color:currentColor}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px}
+
+  nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;gap:22px;align-items:center;height:52px;overflow-x:auto;white-space:nowrap}
+  nav .brand{font-weight:600;color:var(--ink);margin-right:auto}
+  nav a.lnk{color:var(--muted);font-size:14px}
+  nav a.lnk span{font-size:12px;opacity:.75;margin-left:3px}
+
+  header.hero{padding:56px 0 40px;border-bottom:1px solid var(--line)}
+  .hero-grid{display:grid;grid-template-columns:140px 1fr;gap:32px;align-items:center}
+  .avatar{width:140px;height:140px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:44px;color:var(--accent);position:relative}
+  img.avatar{display:block;object-fit:cover;background:#fff;border:3px solid var(--card);box-shadow:0 0 0 1px var(--line)}
+  h1{font-family:var(--serif);font-weight:600;font-size:38px;line-height:1.2;margin:0}
+  h1 .en{display:block;font-size:22px;color:var(--muted);font-weight:400;margin-top:6px}
+  .role{margin:14px 0 0}
+  .role + .role{margin-top:8px}
+  .role .en{display:block;color:var(--muted);font-size:15px}
+  .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .pill{font-size:14px;padding:5px 12px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink)}
+  .pill:hover{border-color:var(--accent);color:var(--accent)}
+
+  section{padding:48px 0;border-bottom:1px solid var(--line)}
+  section:last-of-type{border-bottom:none}
+  h2{font-family:var(--serif);font-size:26px;font-weight:600;margin:0 0 24px;display:flex;align-items:baseline;gap:12px}
+  h2 .en{font-family:var(--sans);font-size:14px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  h3{font-size:17px;margin:28px 0 12px;font-weight:600}
+  h3 .en{color:var(--muted);font-weight:400;margin-left:8px;font-size:15px}
+
+  .bi{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .bi p{margin:0 0 12px}
+  .bi .en{color:var(--muted);font-size:15px;line-height:1.65}
+
+  ul.interests{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 28px}
+  ul.interests li{padding-left:14px;border-left:3px solid var(--accent-soft)}
+  ul.interests .en{display:block;color:var(--muted);font-size:14px}
+
+  .pub{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:12px}
+  .pub .meta{color:var(--muted);font-size:14px;margin-top:4px}
+  .pub .acts{margin-top:8px;display:flex;gap:14px;font-size:14px}
+  .note{color:var(--muted);font-size:14px}
+
+  table{width:100%;border-collapse:collapse;font-size:15px;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:13px;font-weight:600;color:var(--muted);background:var(--accent-soft)}
+  tr:last-child td{border-bottom:none}
+  td .en{display:block;color:var(--muted);font-size:13.5px}
+  td.num{white-space:nowrap}
+  .tag{font-size:12px;padding:1px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+
+
+  dl.contact{display:grid;grid-template-columns:150px 1fr;gap:8px 16px;margin:0}
+  dl.contact dt{color:var(--muted);font-size:14px}
+  dl.contact dd{margin:0;word-break:break-all}
+
+  mark.todo{background:var(--todo-bg);color:var(--todo-ink);padding:1px 6px;border-radius:4px;font-size:.9em}
+  footer{padding:28px 0 48px;color:var(--muted);font-size:13px}
+
+  @media (max-width:680px){
+    .hero-grid{grid-template-columns:1fr;text-align:left}
+    .avatar{width:96px;height:96px;font-size:30px;margin-bottom:24px}
+    h1{font-size:30px}
+    .bi,ul.interests{grid-template-columns:1fr;gap:12px}
+    dl.contact{grid-template-columns:1fr;gap:2px}
+    dl.contact dd{margin-bottom:10px}
+    th:nth-child(3),td:nth-child(3){display:none}
+  }
+  @media print{ nav{display:none} body{background:#fff} section{page-break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<nav aria-label="主選單">
+  <div class="wrap">
+    <a class="brand" href="#top">高綋恩 Hung-En Kao</a>
+    <a class="lnk" href="#about">關於<span>About</span></a>
+    <a class="lnk" href="#research">研究<span>Research</span></a>
+    <a class="lnk" href="#teaching">教學<span>Teaching</span></a>
+    <a class="lnk" href="#contact">聯絡<span>Contact</span></a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <img class="avatar" src="photo.jpg" width="140" height="140" alt="高綋恩 Hung-En Kao">
+    <div>
+      <h1>高綋恩<span class="en">Hung-En Kao</span></h1>
+      <p class="role">中原大學 商學博士學位學程 博士候選人
+        <span class="en">Ph.D. Candidate, Ph.D. Program in Business, College of Business, Chung Yuan Christian University</span></p>
+      <p class="role">國立臺灣師範大學 研究員
+        <span class="en">Researcher, National Taiwan Normal University</span></p>
+      <div class="links">
+        <a class="pill" href="https://orcid.org/0009-0008-7371-1408">ORCID</a>
+        <a class="pill" href="https://scholar.google.com/citations?user=CQBbuk8AAAAJ">Google Scholar</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="about">
+  <div class="wrap">
+    <h2>關於<span class="en">About</span></h2>
+    <div class="bi">
+      <div>
+        <p>我的研究位於人工智慧、資訊安全經濟學與管理理論的交會處，以資源基礎觀點（RBV）與制度理論，探討組織如何導入與治理 AI 驅動的資安能力。博士論文聚焦於 AI 驅動之內部威脅偵測。</p>
+        <p>在學術研究之外，我在公部門累積近十年的資訊與資安實務經驗，並於 2017–2024 年間在明新科技大學資訊工程系擔任兼任講師，講授程式設計、伺服器管理與資訊安全課程。</p>
+        <p class="note">指導教授：皮世明 教授</p>
+      </div>
+      <div class="en">
+        <p>My research sits at the intersection of artificial intelligence, cybersecurity economics, and management theory. Drawing on the Resource-Based View and Institutional Theory, I study how organizations adopt and govern AI-driven security capabilities. My dissertation focuses on AI-driven insider threat detection.</p>
+        <p>Alongside research, I bring nearly ten years of hands-on IT and cybersecurity experience in the public sector, and taught programming, server administration, and information security as an adjunct lecturer at Minghsin University of Science and Technology from 2017 to 2024.</p>
+        <p class="note">Advisor: Prof. Shih-Ming Pi</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <h2>研究<span class="en">Research</span></h2>
+
+    <h3>研究興趣<span class="en">Research Interests</span></h3>
+    <ul class="interests">
+      <li>AI 於資安管理之應用<span class="en">AI in cybersecurity management</span></li>
+      <li>內部威脅偵測<span class="en">Insider threat detection</span></li>
+      <li>資訊安全經濟學<span class="en">Cybersecurity economics</span></li>
+      <li>大型語言模型輔助弱點偵測<span class="en">LLM-assisted vulnerability detection</span></li>
+      <li>資源基礎觀點與制度理論<span class="en">Resource-Based View &amp; Institutional Theory</span></li>
+    </ul>
+
+    <h3>期刊論文<span class="en">Journal Articles</span></h3>
+    <div class="pub">
+      <div><strong>Kao, H.-E.</strong>, &amp; Pi, S.-M. (2026). Coordination as a Security Control: Evidence from Alert Adjudication Records. <em>Systems</em>, <em>14</em>(11), 1386.</div>
+      <div class="meta">DOI: <a href="https://doi.org/10.3390/systems14111386">10.3390/systems14111386</a></div>
+    </div>
+    <div class="pub">
+      <div>Lin, H.-L., <strong>Kao, H.-E.</strong>, Pi, S.-M., &amp; Li, K.-C. (2026). Capability Thresholds and Sanitisation Blind Spots in LLM-Assisted Vulnerability Detection: A Factorial Prompt Study on a Reconstructed PHP Benchmark. <em>IEEE Access</em>, <em>14</em>, 157648–157661.</div>
+      <div class="meta">DOI: <a href="https://doi.org/10.1109/ACCESS.2026.3741095">10.1109/ACCESS.2026.3741095</a></div>
+      <div class="acts"><a href="https://github.com/sam-kao-TW/llm-vuln-detection-ablation">重現資料 Code &amp; Data</a></div>
+    </div>
+
+    <h3>博士論文<span class="en">Dissertation</span></h3>
+    <div class="pub">
+      <div>人工智慧驅動內部威脅偵測之策略價值：結合資源基礎觀點與制度理論之混合方法研究</div>
+      <div class="meta">The Strategic Value of AI-Driven Insider Threat Detection: A Mixed-Methods Study from the Perspectives of Resource-Based View and Institutional Theory</div>
+      <div class="meta">進行中 In progress · 指導教授 Advisor：皮世明 教授 Prof. Shih-Ming Pi</div>
+    </div>
+  </div>
+</section>
+
+<section id="teaching">
+  <div class="wrap">
+    <h2>教學<span class="en">Teaching</span></h2>
+    <p>明新科技大學 資訊工程系（進修部）兼任講師，2017–2024<br>
+      <span class="note">Adjunct Lecturer, Department of Computer Science and Information Engineering (Continuing Education), Minghsin University of Science and Technology, 2017–2024</span></p>
+
+    <table>
+      <thead><tr><th>學期 Term</th><th>課程 Course</th><th>修別 Type</th><th>學分 Credits</th></tr></thead>
+      <tbody>
+        <tr><td class="num">113-1<span class="en">Fall 2024</span></td><td>資訊生活安全與應用<span class="en">Information Life Security and Application</span></td><td><span class="tag">選修 Elective</span></td><td>3</td></tr>
+        <tr><td class="num">112-1<span class="en">Fall 2023</span></td><td>資訊安全<span class="en">Information Security</span></td><td><span class="tag">選修 Elective</span></td><td>3</td></tr>
+        <tr><td class="num">109-1<span class="en">Fall 2020</span></td><td>程式設計概論<span class="en">Programming Fundamental</span></td><td><span class="tag">必修 Required</span></td><td>2</td></tr>
+        <tr><td class="num">106-2<span class="en">Spring 2018</span></td><td>程式設計實務<span class="en">Computer Programming Practice</span></td><td><span class="tag">必修 Required</span></td><td>3</td></tr>
+        <tr><td class="num">106-1<span class="en">Fall 2017</span></td><td>伺服器架設<span class="en">Server Building</span></td><td><span class="tag">選修 Elective</span></td><td>3</td></tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2>聯絡<span class="en">Contact</span></h2>
+    <dl class="contact">
+      <dt>ORCID</dt><dd><a href="https://orcid.org/0009-0008-7371-1408">0009-0008-7371-1408</a></dd>
+      <dt>Google Scholar</dt><dd><a href="https://scholar.google.com/citations?user=CQBbuk8AAAAJ">scholar.google.com/citations?user=CQBbuk8AAAAJ</a></dd>
+    </dl>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 高綋恩 Hung-En Kao · 最後更新 Last updated: 2026-11</div>
+</footer>
+
+</body>
+</html>
